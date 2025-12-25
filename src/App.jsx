@@ -48,6 +48,7 @@ const App = () => {
                 setUserData([]);
               }
             }}
+            disabled={page === 1}
             text={"Prev"}
           />
           <h4>Page {page}</h4>
