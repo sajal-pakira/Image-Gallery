@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Components/Card";
+import Button from "./Components/Button";
 
 const App = () => {
   let [userData, setUserData] = useState([]);
@@ -36,17 +37,14 @@ const App = () => {
       <h1 className="text-5xl flex justify-center items-center pb-7">
         Image Gallery
       </h1>
-      <div className="h-full flex flex-wrap gap-10">
-        {printUserData}
-        {/* <div className="flex justify-center gap-5 items-center w-full">
-          <div className="bg-amber-300 text-black text-lg px-5 py-2 active:scale-85 cursor-pointer">
-            Prev
-          </div>
-          <h4>Page 1</h4>
-          <div className="bg-amber-300 text-black text-lg px-5 py-2 active:scale-85 cursor-pointer">
-            Next
-          </div>
-        </div> */}
+      <div className="h-full flex flex-col gap-14">
+        <div className="flex flex-wrap gap-10 ">{printUserData}</div>
+
+        <div className="flex justify-center gap-5 items-center w-full">
+          <Button text={"Prev"} />
+          <h4>Page _</h4>
+          <Button text="Next"/>
+        </div>
       </div>
     </div>
   );
