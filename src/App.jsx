@@ -19,9 +19,9 @@ const App = () => {
   }, [page]);
 
   let printUserData = (
-    <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      Loading...
-    </h1>
+    <div className="w-full flex justify-center items-center h-100">
+      <h1>Loading...</h1>
+    </div>
   );
   if (userData.length > 0) {
     printUserData = userData.map((elem) => {
@@ -38,12 +38,15 @@ const App = () => {
         Image Gallery
       </h1>
       <div className="h-full flex flex-col gap-14">
-        <div className="flex flex-wrap gap-10 ">{printUserData}</div>
+        <div className="flex flex-wrap gap-10 h-full">{printUserData}</div>
 
         <div className="flex justify-center gap-5 items-center w-full">
           <Button
             onClick={() => {
-              if (page > 1) setPage(page - 1);
+              if (page > 1) {
+                setPage(page - 1);
+                setUserData([]);
+              }
             }}
             text={"Prev"}
           />
@@ -51,6 +54,7 @@ const App = () => {
           <Button
             onClick={() => {
               setPage(page + 1);
+              setUserData([]);
             }}
             text="Next"
           />
