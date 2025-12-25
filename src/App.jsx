@@ -5,10 +5,10 @@ import Button from "./Components/Button";
 
 const App = () => {
   let [userData, setUserData] = useState([]);
-  // const [first, setfirst] = useState(second);
+  const [page, setPage] = useState(1);
   const getdata = async () => {
     let fetchedData = await axios.get(
-      "https://picsum.photos/v2/list?page=2&limit=20"
+      `https://picsum.photos/v2/list?page=${page}&limit=20`
     );
     // console.log(fetchedData.data);
     setUserData(fetchedData.data);
@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     getdata();
-  }, []);
+  }, [page]);
 
   let printUserData = (
     <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -41,9 +41,19 @@ const App = () => {
         <div className="flex flex-wrap gap-10 ">{printUserData}</div>
 
         <div className="flex justify-center gap-5 items-center w-full">
-          <Button text={"Prev"} />
-          <h4>Page _</h4>
-          <Button text="Next"/>
+          <Button
+            onClick={() => {
+              if (page > 1) setPage(page - 1);
+            }}
+            text={"Prev"}
+          />
+          <h4>Page {page}</h4>
+          <Button
+            onClick={() => {
+              setPage(page + 1);
+            }}
+            text="Next"
+          />
         </div>
       </div>
     </div>

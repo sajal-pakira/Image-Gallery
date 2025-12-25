@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 
 const Button = (props) => {
-  const { text } = props;
+  const { text, onClick } = props;
   return (
-    <div className="bg-amber-300 text-black text-lg px-5 py-2 active:scale-85 cursor-pointer">
+    <div
+      onClick={onClick}
+      className="bg-amber-300 text-black text-lg px-5 py-2 active:scale-95 cursor-pointer select-none"
+    >
       {text}
     </div>
   );
@@ -11,6 +14,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Button;
